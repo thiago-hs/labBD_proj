@@ -17,3 +17,6 @@ As tecnologias utilizadas são: React no front, node no back e mySql no bano.
 - [ ] CONSULTA
 - [ ] RELATÓRIO
 - [ ] CHAMADA DE STORED PROCEDURE
+
+#### BD Schema
+![Image of Data Base Schema Diagram](https://raw.githubusercontent.com/thiago-hs/labBD_proj/master/SCHEMA.png)
