@@ -8,3 +8,12 @@ As tecnologias utilizadas são: React no front, node no back e mySql no bano.
 * **server/** : Contem a modulo que inicia o servidor
 * **db/** : Contem um script SQL para gerar um banco com dados iniciais.
 * **client/** : Contem todo o código da aplicação front-end
+
+### Checklist do trabalho 
+
+- [ ] INSERT
+- [ ] DELETE
+- [ ] UPDATE
+- [ ] CONSULTA
+- [ ] RELATÓRIO
+- [ ] CHAMADA DE STORED PROCEDURE
