@@ -33,10 +33,6 @@ router.get('/',function(req,res){
 	res.sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
-router.get('/*',function(req,res){
-	res.redirect('/');
-});
-
 //add the router
 app.use('/', router);
 app.listen(process.env.port || 3000);
