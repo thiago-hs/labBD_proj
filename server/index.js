@@ -29,7 +29,7 @@ router.get('/api/categoria',function(req,res){
   	});
 });
 
-router.get('/',function(req,res){
+router.get('/*',function(req,res){
 	res.sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
