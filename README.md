@@ -25,27 +25,27 @@ As tecnologias utilizadas são: React no front, node no back e mySql no banco.
 ### API Mini Doc
 
 * **/api/categoria** (GET,POST)
-* **/api/categoria/<id>** (GET,PUT,DELETE)
+* **/api/categoria/`<id>`** (GET,PUT,DELETE)
 
 * **/api/produto** (GET,POST)
-* **/api/produto/<id>** (GET,PUT,DELETE)
+* **/api/produto/`<id>`** (GET,PUT,DELETE)
 
 * **/api/entrada** (GET,POST)
-* **/api/entrada/<id>** (GET,PUT,DELETE)
+* **/api/entrada/`<id>`** (GET,PUT,DELETE)
 
 * **/api/saida** (GET,POST)
-* **/api/saida/<id>** (GET,PUT,DELETE)
+* **/api/saida/`<id>`** (GET,PUT,DELETE)
 
 * **/api/fornedor** (GET,POST)
-* **/api/fornedor/<id>** (GET,PUT,DELETE)
+* **/api/fornedor/`<id>`** (GET,PUT,DELETE)
 
 * **/api/transportadora** (GET,POST)
-* **/api/transportadora/<id>** (GET,PUT,DELETE)
+* **/api/transportadora/`<id>`** (GET,PUT,DELETE)
 
 * **/api/loja** (GET,POST)
-* **/api/loja/<id>** (GET,PUT,DELETE)
+* **/api/loja/`<id>`** (GET,PUT,DELETE)
 
 * **/api/cidade** (GET,POST)
-* **/api/cidade/<id>** (GET,PUT,DELETE)
+* **/api/cidade/`<id>`** (GET,PUT,DELETE)
 
 > Todos os GET terão todas as propriedades previstas no banco, em caso de um id específico apenas o registro dessa chave será retornado, caso contrário todos registros devem ser retornados, em caso de alguma propriedade ser um chave estranjeira o nome da referência também tem que ser fornecido; os POST receberão todos os propriedades previstas no banco menos a chave primária; os PUT receberão o objeto completo com os dados que já existiam mais o(s) dado(s) que foi alterado, tudo no mesmo objeto; já os DELETE apenas receberão o id da entidade.
