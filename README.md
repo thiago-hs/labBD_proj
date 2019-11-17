@@ -32,9 +32,11 @@ As tecnologias utilizadas são: React no front, node no back e mySql no banco.
 
 * **/api/entrada** (GET,POST)
 * **/api/entrada/`<id>`** (GET,PUT,DELETE)
+* **/api/entrada/`<productId>`** (GET)
 
 * **/api/saida** (GET,POST)
 * **/api/saida/`<id>`** (GET,PUT,DELETE)
+* **/api/saida/`<productId>`** (GET)
 
 * **/api/fornedor** (GET,POST)
 * **/api/fornedor/`<id>`** (GET,PUT,DELETE)
