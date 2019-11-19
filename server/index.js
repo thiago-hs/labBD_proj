@@ -5,6 +5,7 @@ const app     = express();
 	  app.use(express.json());
 const router  = express.Router();
 
+/*
 const con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -16,6 +17,7 @@ con.connect((err)=>{
   	if (err) throw err;
   	console.log("Connected!");
 });
+*/
 
 //CATEGORIA
 router.get('/api/categoria',function(req,res){
@@ -146,10 +148,10 @@ router.get('/api/fornecedor/:id',function(req,res){
 
 //everything else
 router.get('/*',function(req,res){
-	res.sendFile(path.resolve(__dirname, '../client/index.html'));
+	res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
 });
 
 //add the router
 app.use('/', router);
-app.listen(process.env.port || 3000);
-console.log('Running at Port 3000');
+app.listen(process.env.port || 3030);
+console.log('Running at Port 3030');
