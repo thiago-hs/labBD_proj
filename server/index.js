@@ -1,15 +1,16 @@
-const path    = require('path');
+const path = require('path');
 const mysql = require('mysql');
 const express = require('express');
-const app     = express();
-	  app.use(express.json());
+const app = express();
 const router  = express.Router();
 
-/*
+app.use('/assets', express.static(path.resolve(__dirname, '../client/build/')));
+app.use(express.json());
+
 const con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'alunofatec',
+  password : '',
   database : 'estoque'
 });
 
@@ -17,7 +18,7 @@ con.connect((err)=>{
   	if (err) throw err;
   	console.log("Connected!");
 });
-*/
+
 
 //CATEGORIA
 router.get('/api/categoria',function(req,res){
