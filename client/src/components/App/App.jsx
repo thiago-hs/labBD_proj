@@ -8,6 +8,7 @@ import Details from '../Details/Details.jsx';
 import Delete from '../Delete/Delete.jsx';
 import Insert from '../Insert/Insert.jsx';
 import Update from '../Update/Update.jsx';
+import Apresentacao from '../Apresentacao/Apresentacao.jsx';
 
 function App() {
   let baseURL = 'http://localhost:3030';
@@ -975,6 +976,15 @@ function App() {
                     idProp='CodItemSaida' 
                     nameProp='CodProduto'  
                     indexURL='/item-saidas' 
+                    {...props} 
+                  />
+                )
+              }
+            </Route>
+            <Route exact key="root" path='/'>
+              {
+                (props)=>(
+                  <Apresentacao 
                     {...props} 
                   />
                 )
