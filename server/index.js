@@ -1,10 +1,12 @@
 const path = require('path');
 const mysql = require('mysql');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const router  = express.Router();
 
 app.use('/assets', express.static(path.resolve(__dirname, '../client/build/')));
+app.use(cors());
 app.use(express.json());
 
 const con = mysql.createConnection({
@@ -417,7 +419,7 @@ router.put('/api/loja/:id',function(req,res){
 
 //SAIDA
 router.get('/api/saida',function(req,res){
-	con.query('SELECT * FROM SAIDA', (error, result)=>{
+	con.query('SELECT * FROM SAIDA NATURAL JOIN LOJA ', (error, result)=>{
 		if (error) throw error;
 
 		res.send(result);
@@ -560,8 +562,8 @@ router.post('/api/produto/',function(req,res){
 });
 router.delete('/api/produto/:id',function(req,res){
 	con.query(`DELETE FROM PRODUTO WHERE CodProduto=${req.params.id}`, (error, result) =>{
-    	if (error) throw error;
-    	
+		if (error) throw error;
+		
     	res.send({
 			result: 'OK'
 		});
