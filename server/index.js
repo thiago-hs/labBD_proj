@@ -147,7 +147,7 @@ router.get('/api/fornecedor/:id',function(req,res){
 router.post('/api/fornecedor',function(req,res){	
 	const fornecedorReq = req.body;
 	con.query(`INSERT INTO FORNECEDOR (CodCidade,NomeFornecedor,Endereco,Bairro,CEP,Email,CNPJ,Tel) VALUES
-	         ('${fornecedorReq.codCidade}','${fornecedorReq.nome}','${fornecedorReq.endereco}','${fornecedorReq.bairro}','${fornecedorReq.cep}','${fornecedorReq.email}','${fornecedorReq.cnpj}','${fornecedorReq.tel}')`, (error, result) =>{
+	         (${fornecedorReq.codCidade},'${fornecedorReq.nome}','${fornecedorReq.endereco}','${fornecedorReq.bairro}','${fornecedorReq.cep}','${fornecedorReq.email}','${fornecedorReq.cnpj}','${fornecedorReq.tel}')`, (error, result) =>{
     	if (error) throw error;
 		con.query(`SELECT * FROM FORNECEDOR WHERE CodFornecedor=${result.insertId}`, (selectError, selectResult) =>{
 			if (selectError) throw selectError;
@@ -204,8 +204,8 @@ router.get('/api/transportadora/:id',function(req,res){
 
 router.post('/api/transportadora/',function(req,res){
 	const transportadoraReq = req.body;
-	con.query(`INSERT INTO TRANSPORTADORA(NomeTransport,Endereco,Contato,Tel) VALUES 
-		     ('${transportadoraReq.nome}','${transportadoraReq.endereco}','${transportadoraReq.contato}','${transportadoraReq.tel}')`, 
+	con.query(`INSERT INTO TRANSPORTADORA(NomeTransport,CodCidade,Endereco,Contato,Tel) VALUES 
+		     ('${transportadoraReq.nome}',${fornecedorReq.codCidade},'${transportadoraReq.endereco}','${transportadoraReq.contato}','${transportadoraReq.tel}')`, 
 		     (error, result) =>{
     	if (error) throw error;
 

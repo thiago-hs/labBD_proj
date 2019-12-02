@@ -15,11 +15,12 @@ function App() {
     <BrowserRouter>
     <div className="App container border border-secondary rounded">
       <div className="row h-100">
-        <div className="col-3 h-100">
+        <div className="col-3 h-100 nav-container">
           <Nav />
         </div>
-        <div className="col-9 h-100">
+        <div className="col-9 h-100 main-container">
           <Switch>
+            {/*PRODUTO*/}
             <Route exact key="produto-lista" path='/produtos'>
               {
                 (props)=>(
@@ -93,6 +94,7 @@ function App() {
                 )
               }
             </Route>
+            {/*CATEGORIA*/}
             <Route exact key="categoria-lista" path='/categorias'>
               {
                 (props)=>(
@@ -152,6 +154,7 @@ function App() {
                 )
               }
             </Route>
+            {/*CIDADE*/}
             <Route exact key="cidade-lista" path='/cidades'>
               {
                 (props)=>(
@@ -212,6 +215,7 @@ function App() {
                 )
               }
             </Route>
+            {/*FORNECEDOR*/}
             <Route exact key="fornecedor-lista" path='/fornecedores'>
               {
                 (props)=>(
@@ -283,23 +287,11 @@ function App() {
                 )
               }
             </Route>
+            {/*TRANSPORTADORA*/}
             <Route exact key="transportadora-lista" path='/transportadoras'>
               {
                 (props)=>(
                   <Table 
-                    title='Transportadoras' 
-                    baseURL={baseURL}
-                    dataSrc='/api/transportadora' 
-                    idProp='CodTransportadora' 
-                    nameProp='NomeTransport'
-                  />
-                )
-              }
-            </Route>
-            <Route exact key="transportadora-detalhes" path='/transportadoras/:id'>
-              {
-                (props)=>(
-                  <Details 
                     title='Transportadoras' 
                     baseURL={baseURL}
                     dataSrc='/api/transportadora' 
@@ -324,6 +316,47 @@ function App() {
                 )
               }
             </Route>
+            <Route exact key="transportadora-insert" path='/transportadoras/inserir'>
+              {
+                (props)=>(
+                  <Insert
+                    title='Transportadoras' 
+                    baseURL={baseURL}
+                    dataSrc='/api/transportadora' 
+                    idProp='CodTransportadora' 
+                    nameProp='NomeTransport'
+                    indexURL='/transportadoras' 
+                    {...props} 
+                    form={{
+                      codCidade:{
+                        type:'select',
+                        src: '/api/cidade',
+                        idProp: 'CodCidade',
+                        titleProp: 'Cidade'
+                      },
+                      nome: {type: 'text'},
+                      endereco: {type: 'text'},
+                      contato: {type: 'text'},
+                      tel: {type: 'text'}
+                    }}
+                  />
+                )
+              }
+            </Route>
+            <Route exact key="transportadora-detalhes" path='/transportadoras/:id'>
+              {
+                (props)=>(
+                  <Details 
+                    title='Transportadoras' 
+                    baseURL={baseURL}
+                    dataSrc='/api/transportadora' 
+                    idProp='CodTransportadora' 
+                    nameProp='NomeTransport'
+                  />
+                )
+              }
+            </Route>
+            {/*LOJA*/}
             <Route exact key="loja-lista" path='/lojas'>
               {
                 (props)=>(
@@ -333,6 +366,47 @@ function App() {
                     dataSrc='/api/loja' 
                     idProp='CodLoja' 
                     nameProp='NomeLoja'
+                  />
+                )
+              }
+            </Route>
+            <Route exact key="loja-insert" path='/lojas/inserir'>
+              {
+                (props)=>(
+                  <Insert
+                    title='Lojas' 
+                    baseURL={baseURL}
+                    dataSrc='/api/loja' 
+                    idProp='CodLoja' 
+                    nameProp='NomeLoja'
+                    indexURL='/lojas' 
+                    {...props} 
+                    form={{
+                      codCidade:{
+                        type:'select',
+                        src: '/api/cidade',
+                        idProp: 'CodCidade',
+                        titleProp: 'Cidade'
+                      },
+                      nome: {type: 'text'},
+                      endereco: {type: 'text'},
+                      tel: {type: 'text'}
+                    }}
+                  />
+                )
+              }
+            </Route>
+            <Route exact key="loja-delete" path='/lojas/deletar/:id'>
+              {
+                (props)=>(
+                  <Delete 
+                    title='Lojas' 
+                    baseURL={baseURL}
+                    dataSrc='/api/loja' 
+                    idProp='CodLoja' 
+                    nameProp='NomeLoja'
+                    indexURL='/lojas' 
+                    {...props} 
                   />
                 )
               }
@@ -350,21 +424,7 @@ function App() {
                 )
               }
             </Route>
-            <Route exact key="loja-delete" path='/lojas/deletar/:id'>
-              {
-                (props)=>(
-                  <Delete 
-                    title='Lojas' 
-                    baseURL={baseURL}
-                    dataSrc='/api/loja' 
-                    idProp='CodLoja' 
-                    nameProp='NomeLoja' 
-                    indexURL='/lojas'
-                    {...props}
-                  />
-                )
-              }
-            </Route>
+            {/*ENTRADA*/}
             <Route exact key="entrada-lista" path='/entradas'>
               {
                 (props)=>(
@@ -378,15 +438,29 @@ function App() {
                 )
               }
             </Route>
-            <Route exact key="entrada-detalhes" path='/entradas/:id'>
+            <Route exact key="entrada-insert" path='/entradas/inserir'>
               {
                 (props)=>(
-                  <Details 
+                  <Insert 
                     title='Entradas' 
                     baseURL={baseURL}
                     dataSrc='/api/entrada' 
                     idProp='CodEntrada' 
                     nameProp='DataEntrada'
+                    indexURL='/entradas' 
+                    {...props} 
+                    form={{
+                      codTransportadora:{
+                        type:'select',
+                        src: '/api/transportadora',
+                        idProp: 'CodTransportadora',
+                        titleProp: 'NomeTransport'
+                      },
+                      dataPedido: {type: 'date'},
+                      dataEntrada: {type: 'date'},
+                      total: {type: 'number'},
+                      numNota: {type: 'number'},
+                    }}
                   />
                 )
               }
@@ -406,6 +480,20 @@ function App() {
                 )
               }
             </Route>
+            <Route exact key="entrada-detalhes" path='/entradas/:id'>
+              {
+                (props)=>(
+                  <Details 
+                    title='Entradas' 
+                    baseURL={baseURL}
+                    dataSrc='/api/entrada' 
+                    idProp='CodEntrada' 
+                    nameProp='DataEntrada'
+                  />
+                )
+              }
+            </Route>
+            {/*SAIDA*/}
             <Route exact key="saida-lista" path='/saidas'>
               {
                 (props)=>(
@@ -419,15 +507,32 @@ function App() {
                 )
               }
             </Route>
-            <Route exact key="saida-detalhes" path='/saidas/:id'>
+            <Route exact key="saida-insert" path='/saidas/inserir'>
               {
                 (props)=>(
-                  <Details 
+                  <Insert 
                     title='Saídas' 
                     baseURL={baseURL}
                     dataSrc='/api/saida' 
                     idProp='CodSaida' 
-                    nameProp='NomeLoja'
+                    nameProp='NomeLoja'  
+                    indexURL='/saidas' 
+                    {...props} 
+                    form={{
+                      codLoja:{
+                        type:'select',
+                        src: '/api/loja',
+                        idProp: 'CodLoja',
+                        titleProp: 'NomeLoja'
+                      },
+                      codTransportadora:{
+                        type:'select',
+                        src: '/api/transportadora',
+                        idProp: 'CodTransportadora',
+                        titleProp: 'NomeTransport'
+                      },
+                      total: {type: 'number'}
+                    }}
                   />
                 )
               }
@@ -443,6 +548,19 @@ function App() {
                     nameProp='NomeLoja'  
                     indexURL='/saidas' 
                     {...props}
+                  />
+                )
+              }
+            </Route>
+            <Route exact key="saida-detalhes" path='/saidas/:id'>
+              {
+                (props)=>(
+                  <Details 
+                    title='Saídas' 
+                    baseURL={baseURL}
+                    dataSrc='/api/saida' 
+                    idProp='CodSaida' 
+                    nameProp='NomeLoja'
                   />
                 )
               }
