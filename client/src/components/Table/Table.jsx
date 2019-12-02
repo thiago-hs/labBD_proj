@@ -73,6 +73,12 @@ const Table = (props) => {
                                         <i className="fas fa-clipboard-list"></i>
                                     </Link>
                                     <Link 
+                                        className="btn btn-secondary"
+                                        to={`${location.pathname}/atualizar/${i[props.idProp]}`} 
+                                    >
+                                        <i className="fas fa-pen"></i>
+                                    </Link>
+                                    <Link 
                                         className="btn btn-danger"
                                         to={`${location.pathname}/deletar/${i[props.idProp]}`} 
                                     >

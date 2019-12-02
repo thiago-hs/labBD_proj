@@ -39,12 +39,12 @@ function Details(props){
    return (
        (fetchStatus === 0 || fetchStatus === 1) ? (
            <div className="Details loading">
-               <h1 className="display-4 mb-10">{props.title}</h1>
+               <h1 className="display-4 mb-10">{props.title} - {id}</h1>
                loading...
            </div>
        ):(fetchStatus === 2) ? (
            <div className="Details loaded">
-               <h1 className="display-4 mt-sm-3 mb-sm-5">{props.title}</h1>
+               <h1 className="display-4 mt-sm-3 mb-sm-5">{props.title} - {id}</h1>
                <div className="row">
                     <div className="col-6">
                     {   
@@ -66,7 +66,7 @@ function Details(props){
            </div>
        ):(
            <div className="Details error">
-               <h1 className="display-4 mb-10">{props.title}</h1>
+               <h1 className="display-4 mb-10">{props.title} - {id}</h1>
                error
            </div>
        )

@@ -11,13 +11,28 @@ function Nav(props) {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink exact to="/categorias" activeClassName="active" className="nav-item nav-link">
-              Categorias
+            <NavLink exact to="/entradas" activeClassName="active" className="nav-item nav-link">
+              Entradas
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink exact to="/cidades" activeClassName="active" className="nav-item nav-link">
-              Cidades
+            <NavLink exact to="/item-entradas" activeClassName="active" className="nav-item nav-link">
+              Entrada de Itens
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink exact to="/saidas" activeClassName="active" className="nav-item nav-link">
+              Saídas
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink exact to="/item-saidas" activeClassName="active" className="nav-item nav-link">
+              Saída de Itens
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink exact to="/categorias" activeClassName="active" className="nav-item nav-link">
+              Categorias
             </NavLink>
           </li>
           <li className="nav-item">
@@ -36,13 +51,8 @@ function Nav(props) {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink exact to="/entradas" activeClassName="active" className="nav-item nav-link">
-              Entradas
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink exact to="/saidas" activeClassName="active" className="nav-item nav-link">
-              Saídas
+            <NavLink exact to="/cidades" activeClassName="active" className="nav-item nav-link">
+              Cidades
             </NavLink>
           </li>
       </ul>

@@ -61,7 +61,7 @@ router.put('/api/categoria/:id',function(req,res){
 	const categoriaReq = req.body;
 	con.query(`
 		UPDATE CATEGORIA 
-		SET  NomeCategoria='${categoriaReq.nome}'
+		SET  NomeCategoria='${categoriaReq.NomeCategoria}'
 		WHERE CodCategoria=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -114,7 +114,7 @@ router.put('/api/cidade/:id',function(req,res){
 	const categoriaReq = req.body;
 	con.query(`
 		UPDATE CIDADE
-		SET  Cidade='${categoriaReq.nome},uf='${categoriaReq.uf}'
+		SET  Cidade='${categoriaReq.Cidade},uf='${categoriaReq.uf}'
 		WHERE CodCidade=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -171,9 +171,7 @@ router.put('/api/fornecedor/:id',function(req,res){
 	const fornecedorReq = req.body;
 	con.query(`
 		UPDATE FORNECEDOR 
-		SET CodCidade,NomeFornecedor,Endereco,Bairro,CEP,Email,CNPJ,Tel = '${fornecedorReq.codCidade}','${fornecedorReq.nome}',
-		'${fornecedorReq.endereco}','${fornecedorReq.bairro}', '${fornecedorReq.cep}','${fornecedorReq.email}','${fornecedorReq.cnpj}',
-		'${fornecedorReq.tel}'
+		SET CodCidade=${fornecedorReq.CodCidade},NomeFornecedor='${fornecedorReq.NomeFornecedor}',Endereco='${fornecedorReq.Endereco}',Bairro='${fornecedorReq.Bairro}',CEP='${fornecedorReq.CEP}',Email='${fornecedorReq.Email}',CNPJ='${fornecedorReq.CNPJ}', Tel='${fornecedorReq.Tel}'
 		WHERE CodFornecedor=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -231,8 +229,7 @@ router.put('/api/transportadora/:id',function(req,res){
 	const transportadoraReq = req.body;
 	con.query(`
 		UPDATE TRANSPORTADORA
-		SET NomeTransport,Endereco,Contato,Tel = '${transportadoraReq.nome}','${transportadoraReq.endereco}',
-		'${transportadoraReq.contato}','${transportadoraReq.tel}'
+		SET NomeTransport='${transportadoraReq.NomeTransport}',Endereco='${transportadoraReq.Endereco}',Contato='${transportadoraReq.Contato}',Tel ='${transportadoraReq.Tel}'
 		WHERE CodTransportadora=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -289,8 +286,7 @@ router.put('/api/entrada/:id',function(req,res){
 	const entradaReq = req.body;
 	con.query(`
 		UPDATE ENTRADA
-		SET CodTransportadora,DataPedido,DataEntrada,Total,NumNota = '${entradaReq.codTransportadora}', '${entradaReq.dataPedido}','${entradaReq.dataEntrada}',
-		'${entradaReq.total}','${entradaReq.numNota}'
+		SET CodTransportadora=${entradaReq.CodTransportadora},DataPedido='${entradaReq.DataPedido}',DataEntrada='${entradaReq.DataEntrada}',Total=${entradaReq.Total},NumNota=${entradaReq.NumNota} 
 		WHERE CodEntrada=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -347,8 +343,7 @@ router.put('/api/itementrada/:id',function(req,res){
 	const itementradaReq = req.body;
 	con.query(`
 		UPDATE ITEMENTRADA
-		SET CodProduto,CodEntrada,Quantidade,Valor = '${itementradaReq.codProd}','${itementradaReq.codEntrada}',
-		'${itementradaReq.qtd}','${itementradaReq.val}'
+		SET CodProduto=${itementradaReq.CodProduto},CodEntrada=${itementradaReq.CodEntrada},Quantidade=${itementradaReq.Quantidade},Valor=${itementradaReq.Valor} 
 		WHERE CodItemEntrada=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -405,8 +400,8 @@ router.delete('/api/loja/:id',function(req,res){
 router.put('/api/loja/:id',function(req,res){
 	const lojaReq = req.body;
 	con.query(`
-		UPDATE LOJA
-		SET CodCidade,NomeLoja,Endereco,Tel = '${lojaReq.codCidade}','${lojaReq.nome}', '${lojaReq.endereco}','${lojaReq.tel}'
+		UPDATE LOJA 
+		SET CodCidade=${lojaReq.CodCidade},NomeLoja='${lojaReq.NomeLoja}',Endereco='${lojaReq.Endereco}',Tel='${lojaReq.Tel}'
 		WHERE CodLoja=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -463,7 +458,7 @@ router.put('/api/saida/:id',function(req,res){
 	const saidaReq = req.body;
 	con.query(`
 		UPDATE SAIDA
-		SET CodLoja,CodTransportadora,Total = '${saidaReq.codLoja}','${saidaReq.codTrasportadora}','${saidaReq.total}'
+		SET CodLoja=${saidaReq.CodLoja},CodTransportadora=${saidaReq.CodTransportadora},Total=${saidaReq.Total}
 		WHERE CodSaida=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -521,7 +516,7 @@ router.put('/api/itemsaida/:id',function(req,res){
 	const itemsaidaReq = req.body;
 	con.query(`
 		UPDATE ITEMSAIDA
-		SET CodSaida,CodProduto,Quantidade,Valor = '${itemsaidaReq.codSaida}','${itemsaidaReq.codProd}','${itemsaidaReq.qtd}','${itemsaidaReq.val}'
+		SET CodSaida=${itemsaidaReq.CodSaida},CodProduto=${itemsaidaReq.CodProduto},Quantidade=${itemsaidaReq.Quantidade},Valor=${itemsaidaReq.Valor}
 		WHERE CodItemSaida=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
@@ -573,7 +568,7 @@ router.put('/api/produto/:id',function(req,res){
 	const produtoReq = req.body;
 	con.query(`
 		UPDATE PRODUTO
-		SET  CodCategoria=${produtoReq.categoria},CodFornecedor=${produtoReq.fornecedor},Descricao='${produtoReq.produtoReq}',Peso=${produtoReq.peso},QntMin=${produtoReq.qtdMin}
+		SET  CodCategoria=${produtoReq.CodCategoria},CodFornecedor=${produtoReq.CodFornecedor},Descricao='${produtoReq.Descricao}',Peso=${produtoReq.Peso},QntMin=${produtoReq.QntMin}
 		WHERE CodProduto=${req.params.id}`, 
 		(error, result) =>{
     	if (error) throw error;
